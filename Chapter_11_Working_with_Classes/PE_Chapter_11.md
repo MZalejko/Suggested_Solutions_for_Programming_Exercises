@@ -1,12 +1,12 @@
-C++ Primer Plus. 6th Edition- Programming Exercises 
+C++ Primer Plus. 6th Edition- Programming Exercises  
 Chapter 11  “Working with Classes”
 
-
-
-1.  Modify Listing 11.15 so that it writes the successive locations of the random walker
+1.Modify Listing 11.15 so that it writes the successive locations of the random walker
 into a file. Label each position with the step number.Also have the program write
 the initial conditions (target distance and step size) and the summarized results to
 the file.The file contents might look like this:
+
+```
 Target Distance: 100, Step Size: 20
 0: (x,y) = (0, 0)
 1: (x,y) = (-11.4715, 16.383)
@@ -19,7 +19,9 @@ After 27 steps, the subject has the following location:
 or
 (m,a) = (107.212, -56.8194)
 Average outward distance per step = 3.97081
-2.  Modify the Vector class header and implementation files (Listings 11.13 and 11.14)
+```
+
+2.Modify the Vector class header and implementation files (Listings 11.13 and 11.14)
 so that the magnitude and angle are no longer stored as data components. Instead,
 they should be calculated on demand when the magval() and angval() methods
 are called.You should leave the public interface unchanged (the same public meth-
@@ -28,21 +30,21 @@ private method and the method implementations.Test the modified version with
 Listing 11.15, which should be left unchanged because the public interface of the
 Vector class is unchanged. 
 
-3.  Modify Listing 11.15 so that instead of reporting the results of a single trial for a
+3.Modify Listing 11.15 so that instead of reporting the results of a single trial for a
 particular target/step combination, it reports the highest, lowest, and average num-
 ber of steps for N trials, where N is an integer entered by the user.
 
-4.  Rewrite the final Time class example (Listings 11.10, 11.11, and 11.12) so that all
+4.Rewrite the final Time class example (Listings 11.10, 11.11, and 11.12) so that all
 the overloaded operators are implemented using friend functions.
 
-5.  Rewrite the Stonewt class (Listings 11.16 and 11.17) so that it has a state member
+5.Rewrite the Stonewt class (Listings 11.16 and 11.17) so that it has a state member
 that governs whether the object is interpreted in stone form, integer pounds form,
 or floating-point pounds form. Overload the << operator to replace the
 show_stn() and show_lbs() methods. Overload the addition, subtraction, and
 multiplication operators so that one can add, subtract, and multiply Stonewt values.
 Test your class with a short program that uses all the class methods and friends. 
 
-6.  Rewrite the Stonewt class (Listings 11.16 and 11.17) so that it overloads all six
+6.Rewrite the Stonewt class (Listings 11.16 and 11.17) so that it overloads all six
 relational operators.The operators should compare the pounds members and return
 a type bool value.Write a program that declares an array of six Stonewt objects and
 initializes the first three objects in the array declaration.Then it should use a loop
@@ -50,7 +52,8 @@ to read in values used to set the remaining three array elements.Then it should
 report the smallest element, the largest element, and how many elements are greater
 or equal to 11 stone. (The simplest approach is to create a Stonewt object initial-
 ized to 11 stone and to compare the other objects with that object.)
-7.  A complex number has two parts: a real part and an imaginary part. One way to
+
+7.A complex number has two parts: a real part and an imaginary part. One way to
 write an imaginary number is this: (3.0, 4.0). Here 3.0 is the real part and 4.0 is
 the imaginary part. Suppose a = (A,Bi) and c = (C,Di). Here are some complex
 operations:
@@ -61,32 +64,38 @@ operations:
     • Conjugation: ~a = (A, - Bi)
 Define a complex class so that the following program can use it with correct
 results:
+
+```
 #include <iostream>
 using namespace std;
 #include "complex0.h" // to avoid confusion with complex.h
 int main()
 {
-complex a(3.0, 4.0);  // initialize to (3,4i)
-complex c;
-cout << "Enter a complex number (q to quit):\n";
-while (cin >> c)
-{
-cout << "c is " << c << '\n';
-cout << "complex conjugate is " << ~c << '\n';
-cout << "a is " << a << '\n";
-cout << "a + c is " << a + c << '\n';
-cout << "a - c is " << a - c << '\n';
-cout << "a * c is " << a * c << '\n';
-cout << "2 * c is " << 2 * c << '\n';
-cout << "Enter a complex number (q to quit):\n";
+    complex a(3.0, 4.0);  // initialize to (3,4i)
+    complex c;
+    cout << "Enter a complex number (q to quit):\n";
+    while (cin >> c)
+    {
+    cout << "c is " << c << '\n';
+    cout << "complex conjugate is " << ~c << '\n';
+    cout << "a is " << a << '\n";
+    cout << "a + c is " << a + c << '\n';
+    cout << "a - c is " << a - c << '\n';
+    cout << "a * c is " << a * c << '\n';
+    cout << "2 * c is " << 2 * c << '\n';
+    cout << "Enter a complex number (q to quit):\n";
+    }
+    cout << "Done!\n";
+    return 0;
 }
-cout << "Done!\n";
-return 0;
-}
+```
+
 Note that you have to overload the << and >> operators. Standard C++ already has
 complex support—rather more extensive than in this example—in a complex
 header file, so use complex0.h to avoid conflicts. Use const whenever warranted.
 Here is a sample run of the program:
+
+```
 Enter a complex number (q to quit):
 real: 10
 imaginary: 12
@@ -100,5 +109,7 @@ a * c is (-18,76i)
 Enter a complex number (q to quit):
 real: q
 Done!
+```
+
 Note that cin >> c, through overloading, now prompts for real and imaginary
 parts.

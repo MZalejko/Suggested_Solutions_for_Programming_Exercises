@@ -1,9 +1,8 @@
-C++ Primer Plus. 6th Edition- Programming Exercises 
+C++ Primer Plus. 6th Edition- Programming Exercises  
 Chapter 16  “The string Class and the
 Standard Template Library”
 
-
-1.  A palindrome is a string that is the same backward as it is forward. For example,“tot”
+1.A palindrome is a string that is the same backward as it is forward. For example,“tot”
 and “otto” are rather short palindromes.Write a program that lets a user enter a
 string and that passes to a bool function a reference to the string.The function
 should return true if the string is a palindrome and false otherwise.At this point,
@@ -11,14 +10,14 @@ don’t worry about complications such as capitalization, spaces, and punctuatio
 That is, this simple version should reject “Otto” and “Madam, I’m Adam.” Feel free
 to scan the list of string methods in Appendix F for methods to simplify the task.
 
-2.  Do the same problem as given in Programming Exercise 1 but do worry about
+2.Do the same problem as given in Programming Exercise 1 but do worry about
 complications such as capitalization, spaces, and punctuation.That is,“Madam, I’m
 Adam” should test as a palindrome. For example, the testing function could reduce
 the string to “madamimadam” and then test whether the reverse is the same. Don’t
 forget the useful cctype library.You might find an STL function or two useful
 although not necessary.
 
-3.  Redo Listing 16.3 so that it gets it words from a file. One approach is to use a
+3.Redo Listing 16.3 so that it gets it words from a file. One approach is to use a
 vector<string> object instead of an array of string.Then you can use
 push_back() to copy how ever many words are in your data file into the
 vector<string> object and use the size() member to determine the length of
@@ -32,67 +31,84 @@ reversed order.ld read one word at a time from the file,
 you should use the >> operator rather than getline().The file itself should contain
 words separated by spaces, tabs, or new lines.
 
-4. Write a function with an old-style interface that has this prototype:
+4.Write a function with an old-style interface that has this prototype:
+
+```
 int reduce(long ar[], int n);
+```
+
 The actual arguments should be the name of an array and the number of elements
 in the array.The function should sort an array, remove duplicate values, and return a
 value equal to the number of elements in the reduced array.Write the function
 using STL functions. (If you decide to use the general unique() function, note that
 it returns the end of the resulting range.) Test the function in a short program.
 
-5.  Do the same problem as described in Programming Exercise 4, except make it a
+5.Do the same problem as described in Programming Exercise 4, except make it a
 template function:
+
+```
 template <class T>
 int reduce(T ar[], int n);
+```
+
 Test the function in a short program, using both a long instantiation and a string
 instantiation.
 
-6.  Redo the example shown in Listing 12.12, using the STL queue template class
+6.Redo the example shown in Listing 12.12, using the STL queue template class
 instead of the Queue class described in Chapter 12.
 
-7.  A common game is the lottery card.The card has numbered spots of which a cer-
+7.A common game is the lottery card.The card has numbered spots of which a cer-
 tain number are selected at random.Write a Lotto() function that takes two argu-
 ments.The first should be the number of spots on a lottery card, and the second
 should be the number of spots selected at random.The function should return a
 vector<int> object that contains, in sorted order, the numbers selected at random.
 For example, you could use the function as follows:
+
+```
 vector<int> winners;
 winners = Lotto(51,6);
+```
+
 This would assign to winners a vector that contains six numbers selected randomly
 from the range 1 through 51. Note that simply using rand() doesn’t quite do the
 job because it may produce duplicate values. Suggestion: Have the function create a
 vector that contains all the possible values, use random_shuffle(), and then use the
 beginning of the shuffled vector to obtain the values.Also write a short program
 that lets you test the function.
-8.  Mat and Pat want to invite their friends to a party.They ask you to write a program
+
+8.Mat and Pat want to invite their friends to a party.They ask you to write a program
 that does the following:
     • Allows Mat to enter a list of his friends’ names.The names are stored in a
-container and then displayed in sorted order.
+    container and then displayed in sorted order.
     • Allows Pat to enter a list of her friends’ names.The names are stored in a sec-
-ond container and then displayed in sorted order.
+    ond container and then displayed in sorted order.
     • Creates a third container that merges the two lists, eliminates duplicates, and
-displays the contents of this container.
+    displays the contents of this container.
 
-9. Compared to an array, a linked list features easier addition and removal of elements
+9.Compared to an array, a linked list features easier addition and removal of elements
 but is slower to sort.This raises a possibility: Perhaps it might be faster to copy a list
 to an array, sort the array, and copy the sorted result back to the list than to simply
 use the list algorithm for sorting. (But it also could use more memory.) Test the
 speed hypothesis with the following approach:
     a)  Create a large vector<int> object vi0, using rand() to provide initial
-values.
+    values.
     b) Create a second vector<int> object vi and a list<int> object li of the
-same size as the original and initialize them to values in the original vector.
+    same size as the original and initialize them to values in the original vector.
     c) Time how long the program takes to sort vi using the STL sort() algo-
-rithm, then time how long it takes to sort li using the list sort() method.
+    rithm, then time how long it takes to sort li using the list sort() method.
     d) Reset li to the unsorted contents of vi0.Time the combined operation of
-copying li to vi, sorting vi, and copying the result back to li.
+    copying li to vi, sorting vi, and copying the result back to li.
 
 To time these operations, you can use clock() from the ctime library.As in Listing
 5.14, you can use this statement to start the first timing:
 clock_t start = clock();
 Then use the following at the end of the operation to get the elapsed time:
+
+```
 clock_t end = clock();
 cout << (double)(end - start)/CLOCKS_PER_SEC;
+```
+
 This is by no means a definitive test because the results will depend on a variety of
 factors, including available memory, whether multiprocessing is going on, and the
 size of the array or list. (One would expect the relative efficiency advantage of the
@@ -102,15 +118,15 @@ for the measurement.With today’s speedy computers, you probably will need to u
 as large an array as possible to get meaningful readings.You might try, for example,
 100,000 elements, 1,000,000 elements, and 10,000,000 elements.
 
-10. Modify Listing 16.9 (vect3.cpp) as follows:
+10.Modify Listing 16.9 (vect3.cpp) as follows:
     a) Add a price member to the Review structure.
     b) Instead of using a vector of Review objects to hold the input, use a vector
-of shared_ptr<Review> objects. Remember that a shared_ptr has to be
-initialized with a pointer returned by new.
+    of shared_ptr<Review> objects. Remember that a shared_ptr has to be
+    initialized with a pointer returned by new.
     c) Follow the input stage with a loop that allows the user the following options
-for displaying books: in original order, in alphabetical order, in order of
-increasing ratings, in order of decreasing ratings, in order of increasing price,
-in order of decreasing price, and quitting.
+    for displaying books: in original order, in alphabetical order, in order of
+    increasing ratings, in order of decreasing ratings, in order of increasing price,
+    in order of decreasing price, and quitting.
 
 Here’s one possible approach.After getting the initial input, create another vector of
 shared_ptrs initialized to the original array. Define an operator<() function that

@@ -1,6 +1,5 @@
-C++ Primer Plus. 6th Edition- Programming Exercises 
+C++ Primer Plus. 6th Edition- Programming Exercises  
 Chapter 2 “Setting Out to C++”
-
 1.Write a C++ program that displays your name and address (or if you value your privacy, a fictitious name and address).
 
 2.Write a C++ program that asks for a distance in furlongs and converts it to yards.(One furlong is 220 yards.)

@@ -1,26 +1,26 @@
-C++ Primer Plus. 6th Edition- Programming Exercises 
+C++ Primer Plus. 6th Edition- Programming Exercises  
 Chapter 10 “Objects and Classes”
 
-
-
-1.  Provide method definitions for the class described in Chapter Review Question 5
+1.Provide method definitions for the class described in Chapter Review Question 5
 and write a short program that illustrates all the features.
 
-2.  Here is a rather simple class definition:
+2.Here is a rather simple class definition:
+
+```
 class Person {
-private:
-static const LIMIT = 25;
-string lname;
-// Person’s last name
-char fname[LIMIT]; // Person’s first name
-public:
-Person() {lname = ""; fname[0] = ‘\0’; } // #1
-Person(const string & ln, const char * fn = "Heyyou");
-// the following methods display lname and fname
-void Show() const;
-// firstname lastname format
-void FormalShow() const; // lastname, firstname format
+    private:
+        static const LIMIT = 25;
+        string lname;// Person’s last name
+        char fname[LIMIT]; // Person’s first name
+    public:
+        Person() {lname = ""; fname[0] = ‘\0’; } // #1
+        Person(const string & ln, const char * fn = "Heyyou");
+        // the following methods display lname and fname
+        void Show() const;
+        // firstname lastname format
+        void FormalShow() const; // lastname, firstname format
 };
+```
 
 // #2
 (It uses both a string object and a character array so that you can compare how
@@ -29,6 +29,8 @@ providing code for the undefined methods.The program in which you use the class
 should also use the three possible constructor calls (no arguments, one argument,
 and two arguments) and the two display methods. Here’s an example that uses the
 constructors and methods:
+
+```
 Person one;
 Person two("Smythecraft");
 Person three("Dimwiddy", "Sam");
@@ -39,8 +41,9 @@ one.FormalShow();
 // use default constructor
 // use #2 with one default argument
 // use #2, no defaults
+```
 
-3.  Do Programming Exercise 1 from Chapter 9 but replace the code shown there with
+3.Do Programming Exercise 1 from Chapter 9 but replace the code shown there with
 an appropriate golf class declaration. Replace setgolf(golf &, const char*,
 int) with a constructor with the appropriate argument for providing initial values.
 Retain the interactive version of setgolf() but implement it by using the con-
@@ -48,47 +51,53 @@ structor. (For example, for the code for setgolf(), obtain the data, pass the da
 the constructor to create a temporary object, and assign the temporary object to the
 invoking object, which is *this.)
 
-
-
-
-
-4.  Do Programming Exercise 4 from Chapter 9 but convert the Sales structure and
+4.Do Programming Exercise 4 from Chapter 9 but convert the Sales structure and
 its associated functions to a class and its methods. Replace the setSales(Sales &,
 double [], int) function with a constructor. Implement the interactive
 setSales(Sales &) method by using the constructor. Keep the class within the
 namespace SALES.
 
-5.  Consider the following structure declaration:
+5. Consider the following structure declaration:
+
+```
 struct customer {
-char fullname[35];
-double payment;
+    char fullname[35];
+    double payment;
 };
+```
+
 Write a program that adds and removes customer structures from a stack, repre-
 sented by a Stack class declaration. Each time a customer is removed, his or her
 payment should be added to a running total, and the running total should be
 reported. Note: You should be able to use the Stack class unaltered; just change the
 typedef declaration so that Item is type customer instead of unsigned long.
 
-6.  Here’s a class declaration:
+6. Here’s a class declaration:
+
+```
 class Move
 {
-private:
-double x;
-double y;
-public:
-Move(double a = 0, double b = 0);
-// sets x, y to a, b
-showmove() const;
-// shows current x, y values
-Move add(const Move & m) const;
-// this function adds x of m to x of invoking object to get new x,
-// adds y of m to y of invoking object to get new y, creates a new
-// move object initialized to new x, y values and returns it
-reset(double a = 0, double b = 0); // resets x,y to a, b
+    private:
+        double x;
+        double y;
+    public:
+        Move(double a = 0, double b = 0);
+        // sets x, y to a, b
+        showmove() const;
+        // shows current x, y values
+        Move add(const Move & m) const;
+        // this function adds x of m to x of invoking object to get new x,
+        // adds y of m to y of invoking object to get new y, creates a new
+        // move object initialized to new x, y values and returns it
+        reset(double a = 0, double b = 0); // resets x,y to a, b
 };
+```
+
 Create member function definitions and a program that exercises the class.
 
-7.  A Betelgeusean plorg has these properties:
+7.A Betelgeusean plorg has these properties:
+
+```
 Data
 A plorg has a name with no more than 19 letters.
 A plorg has a contentment index (CI), which is an integer.
@@ -97,14 +106,13 @@ A new plorg starts out with a name and a CI of 50.
 A plorg’s CI can change.
 A plorg can report its name and CI.
 The default plorg has the name "Plorga".
+```
+
 Write a Plorg class declaration (including data members and member function pro-
 totypes) that represents a plorg.Write the function definitions for the member func-
 tions.Write a short program that demonstrates all the features of the Plorg class.
 
-
-
-
-8.  You can describe a simple list as follows:
+8.You can describe a simple list as follows:
     • The simple list can hold zero or more items of some particular type.
     • You can create an empty list.
     • You can add items to the list.

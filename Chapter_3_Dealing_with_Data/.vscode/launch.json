@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/zaleyy/Documents/Podyplomowe/programowanie_c++/Zadania_Prata/Chapter_3_Dealing_with_Data",
-      "program": "/home/zaleyy/Documents/Podyplomowe/programowanie_c++/Zadania_Prata/Chapter_3_Dealing_with_Data/build/Debug/outDebug",
+      "cwd": "/home/zaleyy/Documents/Podyplomowe/programowanie_c++/Zadania_Prata/Suggested_Solutions_for_Programming_Exercises/Chapter_3_Dealing_with_Data",
+      "program": "/home/zaleyy/Documents/Podyplomowe/programowanie_c++/Zadania_Prata/Suggested_Solutions_for_Programming_Exercises/Chapter_3_Dealing_with_Data/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

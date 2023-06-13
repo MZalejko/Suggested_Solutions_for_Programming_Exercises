@@ -1,8 +1,7 @@
-C++ Primer Plus. 6th Edition- Programming Exercises 
+C++ Primer Plus. 6th Edition- Programming Exercises  
 Chapter 14  “Reusing Code in C++”
 
-
-1.  The Wine class has a string class object member (see Chapter 4) that holds the
+1.The Wine class has a string class object member (see Chapter 4) that holds the
 name of a wine and a Pair object (as discussed in this chapter) of valarray<int>
 objects (as discussed in this chapter).The first member of each Pair object holds
 the vintage years, and the second member holds the numbers of bottles owned for
@@ -12,31 +11,33 @@ valarray object might hold the bottle counts 24, 48, and 144. It may be conven-
 ient for Wine to have an int member that stores the number of years.Also some
 typedefs might be useful to simplify the coding:
 
+```
 typedef std::valarray<int> ArrayInt;
 typedef Pair<ArrayInt, ArrayInt> PairArray;
+```
 
-Thus, the PairArray type represents type Pair<std::valarray<int>,
-std::valarray<int> >. Implement the Wine class by using containment.The class
+Thus, the PairArray type represents type Pair<std::valarray<int>,std::valarray<int> >. Implement the Wine class by using containment.The class
 should have a default constructor and at least the following constructors:
 
+```
 // initialize label to l, number of years to y,
 // vintage years to yr[], bottles to bot[]
-
 Wine(const char * l, int y, const int yr[], const int bot[]);
 // initialize label to l, number of years to y,
 // create array objects of length y
 Wine(const char * l, int y);
+```
 
 The Wine class should have a method GetBottles() that, given a Wine object with
 y years, prompts the user to enter the corresponding number of vintage years and
 bottle counts.A method Label() should return a reference to the wine name.A
-method sum() should return the total number of bottles in the second
-valarray<int> object in the Pair object.
+method sum() should return the total number of bottles in the second valarray<int> object in the Pair object.
 The program should prompt the user to enter a wine name, the number of ele-
 ments of the array, and the year and bottle count information for each array ele-
 ment.The program should use this data to construct a Wine object and then display
 the information stored in the object. For guidance, here’s a sample test program:
 
+```
 // pe14-1.cpp -- using Wine class with containment
 #include <iostream>
 #include "winec.h"
@@ -67,6 +68,9 @@ int main ( void )
   cout << "Bye\n";
   return 0;
 }
+```
+
+```
 And here’s some sample output:
 Enter name of wine: Gully Wash
 Enter number of years: 4
@@ -101,20 +105,25 @@ Bottles
 72
 Total bottles for Gushing Grape Red: 180
 Bye
+```
 
-2. This exercise is the same as Programming Exercise 1, except that you should use pri-
+2.This exercise is the same as Programming Exercise 1, except that you should use pri-
 vate inheritance instead of containment.Again, a few typedefs might prove handy.
 Also you might contemplate the meaning of statements such as the following:
+
+```
 PairArray::operator=(PairArray(ArrayInt(),ArrayInt()));
 cout << (const string &)(*this);
+```
+
 The class should work with the same test program as shown in Programming
 Exercise 1.
 
-3. Define a QueueTp template.Test it by creating a queue of pointers-to-Worker (as
+3.Define a QueueTp template.Test it by creating a queue of pointers-to-Worker (as
 defined in Listing 14.10) and using the queue in a program similar to that in
 Listing 14.12.
 
-4. A Person class holds the first name and the last name of a person. In addition to its
+4.A Person class holds the first name and the last name of a person. In addition to its
 constructors, it has a Show() method that displays both names.A Gunslinger class
 derives virtually from the Person class. It has a Draw() member that returns a type
 double value representing a gunslinger’s draw time.The class also has an int mem-
@@ -131,7 +140,9 @@ Show() function. Define all these classes and methods, along with any other nece
 sary methods (such as methods for setting object values) and test them in a simple
 program similar to that in Listing 14.12.
 
-5. Here are some class declarations:
+5.Here are some class declarations:
+
+```
 // emp.h -- header file for abstr_emp class and children
 #include <iostream>
 #include <string>
@@ -141,7 +152,7 @@ class abstr_emp
     std::string fname; // abstr_emp's first name
     std::string lname; // abstr_emp's last name
     std::string job;
-    public:
+  public:
     abstr_emp();
     abstr_emp(const std::string & fn, const std::string & ln,
     const std::string & j);
@@ -196,17 +207,19 @@ class fink: virtual public abstr_emp
 class highfink: public manager, public fink // management fink
 {
   public:
-  highfink();
-  highfink(const std::string & fn, const std::string & ln,
-  const std::string & j, const std::string & rpo,
-  int ico);
-  highfink(const abstr_emp & e, const std::string & rpo, int ico);
-  highfink(const fink & f, int ico);
-  highfink(const manager & m, const std::string & rpo);
-  highfink(const highfink & h);
-  virtual void ShowAll() const;
-  virtual void SetAll();
+    highfink();
+    highfink(const std::string & fn, const std::string & ln,
+    const std::string & j, const std::string & rpo,
+    int ico);
+    highfink(const abstr_emp & e, const std::string & rpo, int ico);
+    highfink(const fink & f, int ico);
+    highfink(const manager & m, const std::string & rpo);
+    highfink(const highfink & h);
+    virtual void ShowAll() const;
+    virtual void SetAll();
 };
+```
+
 Note that the class hierarchy uses MI with a virtual base class, so keep in mind the
 special rules for constructor initialization lists for that case.Also note the presence
 of some protected-access methods.This simplifies the code for some of the
@@ -215,6 +228,7 @@ calls fink::ShowAll() and manager::ShowAll(), it winds up calling
 abstr_emp::ShowAll() twice.) Provide the class method implementations and test
 the classes in a program. Here is a minimal test program:
 
+```
 // pe14-5.cpp
 // useemp1.cpp -- using the abstr_emp classes
 #include <iostream>
@@ -241,10 +255,9 @@ int main(void)
   abstr_emp * tri[4] = {&em, &fi, &hf, &hf2};
   for (int i = 0; i < 4; i++)
   tri[i]->ShowAll();
+  abstr_emp tri[4] = {em, fi, hf, hf2};
+  for (int i = 0; i < 4; i++)
+    tri[i].ShowAll();
   return 0;
 }
-
-abstr_emp tri[4] = {em, fi, hf, hf2};
-for (int i = 0; i < 4; i++)
-tri[i].ShowAll();
-
+```

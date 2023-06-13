@@ -1,15 +1,16 @@
-C++ Primer Plus. 6th Edition- Programming Exercises 
+C++ Primer Plus. 6th Edition- Programming Exercises  
 Chapter 9 “Memory Models and
 Namespaces”
 
+1.Here is a header file:
 
-1. Here is a header file:
+```
 // golf.h -- for pe9-1.cpp
 const int Len = 40;
 struct golf
 {
-char fullname[Len];
-int handicap;
+    char fullname[Len];
+    int handicap;
 };
 // non-interactive version:
 // function sets golf structure to provided name, handicap
@@ -24,14 +25,24 @@ int setgolf(golf & g);
 void handicap(golf & g, int hc);
 // function displays contents of golf structure
 void showgolf(const golf & g);
+```
+
 Note that setgolf() is overloaded. Using the first version of setgolf() would
 look like this:
+
+```
 golf ann;
 setgolf(ann, "Ann Birdfree", 24);
+```
+
 The function call provides the information that’s stored in the ann structure. Using
 the second version of setgolf() would look like this:
+
+```
 golf andy;
 setgolf(andy);
+```
+
 The function would prompt the user to enter the name and handicap and store
 them in the andy structure.This function could (but doesn’t need to) use the first
 version internally.
@@ -43,36 +54,38 @@ structures and terminate when the array is full or the user enters an empty stri
 for the golfer’s name.The main() function should use only the prototyped func-
 tions to access the golf structures.
 
-2. Redo Listing 9.9, replacing the character array with a string object.The program
+2.Redo Listing 9.9, replacing the character array with a string object.The program
 should no longer have to check whether the input string fits, and it can compare
 the input string to "" to check for an empty line.
 
+3.Begin with the following structure declaration:
 
-
-
-
-3. Begin with the following structure declaration:
+```
 struct chaff
 {
-char dross[20];
-int slag;
+    char dross[20];
+    int slag;
 };
+```
+
 Write a program that uses placement new to place an array of two such structures in
 a buffer.Then assign values to the structure members (remembering to use
 strcpy() for the char array) and use a loop to display the contents. Option 1 is to
 use a static array, like that in Listing 9.10, for the buffer. Option 2 is to use regular
 new to allocate the buffer.
 
-4. Write a three-file program based on the following namespace:
+4.Write a three-file program based on the following namespace:
+
+```
 namespace SALES
 {
 const int QUARTERS = 4;
 struct Sales
 {
-double sales[QUARTERS];
-double average;
-double max;
-double min;
+    double sales[QUARTERS];
+    double average;
+    double max;
+    double min;
 };
 // copies the lesser of 4 or n items from the array ar
 // to the sales member of s and computes and stores the
@@ -86,6 +99,8 @@ void setSales(Sales & s);
 // display all information in structure s
 void showSales(const Sales & s);
 }
+```
+
 The first file should be a header file that contains the namespace.The second file
 should be a source code file that extends the namespace to provide definitions for
 the three prototyped functions.The third file should declare two Sales objects. It
