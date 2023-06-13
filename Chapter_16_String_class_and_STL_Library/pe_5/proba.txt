@@ -1,0 +1,98 @@
+std::string* temp;
+    std::string* our_array = new std::string[size_of_array];
+    fill_array(our_array);
+    int new_s;
+
+    std::cout << "Unsorted and duplicated array: " << std::endl;
+    show_array(our_array, size_of_array);
+
+    std::cout << std::endl;
+
+    new_s = reduce(our_array, size_of_array);
+
+    std::cout << "New array size: " << new_s << std::endl;
+
+    temp = new std::string[new_s];
+    std::copy(our_array, our_array + new_s, temp);
+
+    delete [] our_array;
+    our_array = new std::string[new_s];
+    std::copy(temp, temp + new_s, our_array);
+
+    std::cout << "Sorted and unduplicated array: " << std::endl;
+    show_array(our_array, new_s);
+
+
+    std::cout << std::endl;
+
+    delete [] temp;
+    delete [] our_array;
+    
+    return 0;
+
+
+    #ifndef PE_5_HXX
+#define PE_5_HXX
+
+static int new_size{0};
+
+constexpr int size_of_array{10};
+
+template <typename T>
+void show_array(T* array, int x);
+
+template <typename T>
+void fill_array(T* array);
+
+template <typename T>
+int reduce(T* array, int num_);
+
+template <typename T>
+void count_array(T* array, T* new_a_s);
+
+//Definitions
+
+template <typename T>
+void show_array(T* array, int x)
+{
+    for(int it = 0; it < x; it++)
+    {
+        std::cout << *(array+it) << " ";
+    }
+}
+
+template <typename T>
+void fill_array(T* array)
+{
+    for(int it = 0; it < size_of_array; it++)
+    {
+        std::cin >> *(array + it);
+        std::cin.get();
+    }
+}
+
+template <typename T>
+int reduce(T* array, int num_)
+{   
+    
+    std::sort(array, array + num_);
+    T* new_array_size = std::unique(array, array + num_);
+    
+    count_array(array, new_array_size);
+
+    return new_size;
+
+}
+
+template <typename T>
+void count_array(T* array, T* new_a_s)
+{
+    for(auto it = array; it < new_a_s; it++)
+    {
+        new_size++;
+    }
+
+}
+
+
+#endif // PE_5_HXX
